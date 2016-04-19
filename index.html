@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700|IM+Fell+Double+Pica:400italic' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+  	
+	<title>Game</title>
+	<script src="js/game.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="cd-main-content">
+	<div class="center">
+		<h1>Маленькая игра на HTML, CSS и JavaScript</h1>
+		<a href="#0" class="cd-btn cd-modal-trigger">Давайте начнём</a>
+	</div>
+</main> <!-- .cd-main-content -->
+
+<div class="cd-modal">
+	<div class="modal-content">
+		<div id="gameName">hello</div>
+		<canvas id="map"></canvas>
+		<canvas id="player"></canvas>
+		<canvas id="enemy"></canvas>
+		<canvas id="stats"></canvas>
+		
+    	
+        <p>Управляйте вашим самолётом с помощью клавиш: W - вверх, S- вниз, A - вправо, D - влево</p>
+    	
+		<!--<input id="drawBtn" type="button" value="Draw">
+		<input id="clearBtn" type="button" value="Clear">-->
+	</div> <!-- .modal-content -->
+
+	<a href="#0" class="modal-close">Close</a>
+</div> <!-- .cd-modal -->
+
+<div class="cd-transition-layer"> 
+	<div class="bg-layer"></div>
+</div> <!-- .cd-transition-layer -->
+	
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

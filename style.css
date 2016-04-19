@@ -1,0 +1,20 @@
+body {
+	background: #333;
+}
+
+#gameName {
+color:#fff;
+font-family: "HelveticNeue-UltraLight";
+font-size: 27px;
+text-align: center;
+}
+
+canvas {
+	display: block;
+	margin: 30px auto 0px;
+}
+
+#player, #enemy, #stats {
+	display: block;
+	margin: -500px auto 0px;
+}
