@@ -214,6 +214,15 @@ Player.prototype.draw = function(){
 	ctxPl.drawImage(tiles, this.srcX, this.srcY, this.width, this.height, this.drawX, this.drawY, this.width, this.height);
 }
 
+function isAABBsCollided (a, b){
+	//на самом деле, пока это не два AABB, а проверка того, что левый верхний угол "A" попадает в AABB "B"
+	if (a.drawX >= b.drawX && a.drawX <= b.drawX + b.width &&
+		a.drawY >= b.drawY && a.drawY <= b.drawY + b.height)
+		return true;
+
+	return false;
+}
+
 Player.prototype.update = function(){
 	if(health < 0) resetHealth();
 
@@ -222,11 +231,12 @@ Player.prototype.update = function(){
 	if(this.drawY < 0)this.drawY = 0;
 	if(this.drawY > gameHeight - this.height)this.drawY = gameHeight - this.height;
 
-	for(var i =0; i < enemies.length; i++){
-		if(this.drawX >= enemies[i].drawX &&
+	for(var i = 0; i < enemies.length; i++){
+		/*if(this.drawX >= enemies[i].drawX &&
 			this.drawY >= enemies[i].drawY &&
 			this.drawX <= enemies[i].drawX + enemies[i].width &&
-			this.drawY <= enemies[i].drawY + enemies[i].height){
+			this.drawY <= enemies[i].drawY + enemies[i].height){*/
+		if (isAABBsCollided(this, enemies[i])) {
 			health--;
 		}
 	}
