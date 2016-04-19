@@ -215,10 +215,14 @@ Player.prototype.draw = function(){
 }
 
 function isAABBsCollided (a, b){
-	//на самом деле, пока это не два AABB, а проверка того, что левый верхний угол "A" попадает в AABB "B"
+	/*
 	if (a.drawX >= b.drawX && a.drawX <= b.drawX + b.width &&
 		a.drawY >= b.drawY && a.drawY <= b.drawY + b.height)
 		return true;
+	*/
+	if (Math.max(a.drawX, b.drawX) <= Math.min(a.drawX + a.width, b.drawX + b.width) && 
+		Math.max(a.drawY, b.drawY) <= Math.min(a.drawY + a.height, b.drawY + b.height))
+			return true;
 
 	return false;
 }
@@ -232,10 +236,6 @@ Player.prototype.update = function(){
 	if(this.drawY > gameHeight - this.height)this.drawY = gameHeight - this.height;
 
 	for(var i = 0; i < enemies.length; i++){
-		/*if(this.drawX >= enemies[i].drawX &&
-			this.drawY >= enemies[i].drawY &&
-			this.drawX <= enemies[i].drawX + enemies[i].width &&
-			this.drawY <= enemies[i].drawY + enemies[i].height){*/
 		if (isAABBsCollided(this, enemies[i])) {
 			health--;
 		}
