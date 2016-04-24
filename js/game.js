@@ -12,6 +12,9 @@ var ctxEnemy;
 var stats;
 var ctxStats;
 
+var closebtn;
+
+
 //var drawBtn;
 //var clearBtn;
 
@@ -62,6 +65,8 @@ function init(){
 	stats = document.getElementById("stats");
 	ctxStats = stats.getContext("2d");
 
+	closebtn = document.getElementById("close-game");
+
 	map.width = gameWidth;
 	map.height = gameHeight;
 	pl.width = gameWidth;
@@ -71,7 +76,14 @@ function init(){
 	stats.width = gameWidth;
 	stats.height = gameHeight;
 
-	ctxStats.fillStyle = "#3D3D3D";
+	var gradient=ctxStats.createLinearGradient(0,0,gameWidth,0);
+	gradient.addColorStop("0","magenta");
+	gradient.addColorStop("0.5","blue");
+	gradient.addColorStop("1.0","red");
+	// Fill with gradient
+	ctxStats.fillStyle=gradient;
+
+	//ctxStats.fillStyle = "#3D3D3D";
 	ctxStats.font = "bold 15pt Arial";
 
 	//drawBtn = document.getElementById("drawBtn");
@@ -87,7 +99,7 @@ function init(){
 	startLoop();
 	
 	document.addEventListener("mousemove", mouseMove, false);
-	//document.addEventListener("click", mouseClick, false);
+	document.addEventListener("click", mouseClick, false);
 	document.addEventListener("keydown", checkKeyDown, false);
 	document.addEventListener("keyup", checkKeyUp, false);
 }
@@ -99,9 +111,15 @@ function mouseMove(e){
 	document.getElementById("gameName").innerHTML = "X: "+mouseX+" Y: "+mouseY;
 }
 
-//function mouseClick(e) {
+function mouseClick(e) {
 	
-//}
+}
+
+function gameOver(){
+	ctxStats.fillText("Game over", gameWidth/2 - 50, gameHeight/2);
+	closebtn.click();
+	stopLoop();
+}
 
 function resetHealth(){
 	health = 100;
@@ -110,6 +128,13 @@ function resetHealth(){
 function spawnEnemy(count){
 	for(var i=0; i<count; i++){
 		enemies[i] = new Enemy();
+		if (Math.random() > 0.9) {
+			enemies[i].srcY = 240;
+
+			enemies[i].interactWithPlayer = function(player){
+				health ++;
+			}
+		}
 	}
 }
 
@@ -135,6 +160,7 @@ function startLoop(){
 	loop();
 	startCreatingEnemies();
 }
+
 
 function stopLoop(){
 	isPlaying = false;
@@ -205,6 +231,10 @@ Enemy.prototype.update = function(){
 	}
 }
 
+Enemy.prototype.interactWithPlayer = function(player){
+	health --;
+}
+
 Enemy.prototype.destroy = function(){
 	enemies.splice(enemies.indexOf(this),1);
 }
@@ -228,7 +258,7 @@ function isAABBsCollided (a, b){
 }
 
 Player.prototype.update = function(){
-	if(health < 0) resetHealth();
+	if(health < 0) gameOver();
 
 	if(this.drawX < 0)this.drawX = 0;
 	if(this.drawX > gameWidth - this.width)this.drawX = gameWidth - this.width;
@@ -236,13 +266,15 @@ Player.prototype.update = function(){
 	if(this.drawY > gameHeight - this.height)this.drawY = gameHeight - this.height;
 
 	for(var i = 0; i < enemies.length; i++){
-		if (isAABBsCollided(this, enemies[i])) {
-			health--;
+		var currentObj = enemies[i];
+		if (isAABBsCollided(this, currentObj)) {
+			currentObj.interactWithPlayer(this);
 		}
 	}
 
 	this.chooseDir();
 }
+
 
 Player.prototype.chooseDir = function(){
 	if(this.isUp)
