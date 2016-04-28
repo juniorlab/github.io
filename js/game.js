@@ -22,10 +22,10 @@ var gameWidth = 800;
 var gameHeight = 500;
 
 var background = new Image();
-background.src = "img/World.png";
+background.src = "img/World2.png";
 
 var background1 = new Image();
-background1.src = "img/World.png";
+background1.src = "img/World2.png";
 
 var tiles = new Image();
 tiles.src = "img/title.png";
@@ -117,7 +117,7 @@ function mouseClick(e) {
 
 function gameOver(){
 	ctxStats.fillText("Game over", gameWidth/2 - 50, gameHeight/2);
-	closebtn.click();
+	setTimeout(function() {closebtn.click() }, 2000);
 	stopLoop();
 }
 
