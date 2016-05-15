@@ -1,9 +1,3 @@
-Ink Transition Effect
-=========
-An ink bleed transition effect, powered by CSS animations.
+Движок игры в файле main.js
 
-[Article on CodyHouse](https://codyhouse.co/gem/ink-transition-effect/)
-
-[Demo](https://codyhouse.co/demo/ink-transition-effect/index.html)
- 
-[Terms](https://codyhouse.co/terms/)
+Использовались видеоуроки "Пишем игру на HTML5" https://www.youtube.com/playlist?list=PLczcTSDLfwNRmy4ab1HEA4vsNIyJfQmsS и плагин JQuery https://codyhouse.co/gem/ink-transition-effect/
