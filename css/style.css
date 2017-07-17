@@ -22,7 +22,10 @@ a {
   color: #50a1da;
   text-decoration: none;
 }
-
+.info{
+  font-style: italic;
+  font-weight: bold;
+}
 /* -------------------------------- 
 
 Patterns - reusable parts of our design
