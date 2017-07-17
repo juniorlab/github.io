@@ -116,7 +116,7 @@ function mouseClick(e) {
 }
 
 function gameOver(){
-	ctxStats.fillText("Game over", gameWidth/2 - 50, gameHeight/2);
+	ctxStats.fillText("Силы покинули программиста", gameWidth/2 - 50, gameHeight/2);
 	setTimeout(function() {closebtn.click() }, 2000);
 	stopLoop();
 }
@@ -350,7 +350,7 @@ function clearCtxEnemy(){
 
 function updateStats(){
 	ctxStats.clearRect(0, 0, gameWidth, gameHeight);
-	ctxStats.fillText("Health: " + health, 10, 20);
+	ctxStats.fillText("Силы программиста: " + health, 10, 20);
 }
 
 function drawBg(){

@@ -19,7 +19,7 @@ body {
 }
 
 a {
-  color: #a5c4bc;
+  color: #50a1da;
   text-decoration: none;
 }
 
@@ -36,7 +36,7 @@ Patterns - reusable parts of our design
   color: #ffffff;
   font-weight: 700;
   text-transform: uppercase;
-  background-color: #a5c4bc;
+  background-color: #50a1da;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,7 +56,7 @@ Typography
 h1 {
   font-size: 2.6rem;
   line-height: 1;
-  margin-bottom: 1em;
+  margin-bottom: -2em;
   font-family: "IM Fell Double Pica", serif;
   font-style: italic;
 }
@@ -78,15 +78,67 @@ Main Content
   height: 100vh;
   /* vertically align its content */
   display: table;
-  background-color: #e4dcca;
+  background-color: #fff;
 }
 .cd-main-content .center {
   /* vertically align inside parent element */
-  display: table-cell;
   vertical-align: middle;
   text-align: center;
+  margin-top: 50px;
 }
 
+blockquote {
+    margin: 0;
+background: #FFF;
+color: #474C4F;
+padding: 30px;
+position: relative;
+text-align: center;
+text-transform: uppercase;
+font-family: 'Lato', sans-serif;
+}
+blockquote:before {
+content: "©";
+font-family: FontAwesome;
+position: absolute;
+z-index: 2;
+left: 50%;
+transform: translateX(-50%);
+top: 14px;
+color: #474C4F;
+font-size: 20px;
+background: #FFF;
+padding: 0 15px;
+}
+blockquote:after {
+content: "";
+position: absolute;
+left: 15px;
+top: 20px;
+right: 15px;
+height: 4px;
+border-top: 1px dotted #474C4F;
+border-bottom: 1px dotted #474C4F;
+}
+blockquote p {
+font-size: 16px;
+letter-spacing: .05em;
+line-height: 1.4;
+padding: 1em
+}
+blockquote cite {
+font-style: normal;
+font-weight: 300;
+}
+.floatr{
+  float: right;
+}
+.floatl{
+  float: left;
+}
+.spec{
+  padding: 1em;
+}
 /* -------------------------------- 
 
 Modal window 
